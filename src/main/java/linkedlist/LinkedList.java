@@ -58,6 +58,23 @@ public class LinkedList {
 
     }
 
+    private boolean removeMiddle(Node n){
+        if (isEmpty()){
+            throw new NoSuchElementException();
+        }
+
+        if(first == last){
+            first =last= null;
+            return false;
+        }
+        var next = n.next;
+        n.value=next.value;
+        n.next=next.next;
+        return true;
+
+
+    }
+
     private Node getPreviousNode(Node node){
         var current = first;
         while(current!=null){

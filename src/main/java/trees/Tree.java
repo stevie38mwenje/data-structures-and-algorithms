@@ -66,5 +66,33 @@ public class Tree {
         }
         return false;
     }
+    private void traversePreOrder(Node root){
+        if(root==null){
+            return;
+        }
+        System.out.println(root.value);
+        traversePreOrder(root.leftChild);
+        traversePreOrder(root.rightChild);
+    }
+
+    private void traverseInOrder(Node root){
+        if(root==null){
+            return;
+        }
+        traverseInOrder(root.leftChild);
+        System.out.println(root);
+        traversePreOrder(root.rightChild);
+
+    }
+
+    private void traversePostOrder(Node root){
+        if(root==null){
+            return;
+        }
+        traversePostOrder(root.leftChild);
+        traversePostOrder(root.rightChild);
+        System.out.println(root);
+
+    }
 
 }

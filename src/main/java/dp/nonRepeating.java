@@ -19,7 +19,7 @@ public class nonRepeating {
                     set.remove(s.charAt(leftPointer++));
                     //leftPointer++;
             }
-
+        System.out.println(set);
         return ans;
     }
 

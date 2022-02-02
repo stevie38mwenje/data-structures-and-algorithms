@@ -16,7 +16,7 @@ public class LinkedList {
     private Node first;
     private Node last;
 
-    private void addLast(int item){
+    public void addLast(int item){
         var node = new Node(item);
         if(isEmpty()){
             first = node;
@@ -26,7 +26,7 @@ public class LinkedList {
             last  = node;
     }
 
-    private void addFirst(int item){
+    public void addFirst(int item){
         var node = new Node(item);
         if(isEmpty()){
             first = node;
@@ -58,7 +58,37 @@ public class LinkedList {
 
     }
 
-    private boolean removeMiddle(Node n){
+    public LinkedList reverseList(LinkedList list){
+        var current = list.first;
+        //var previous = getPreviousNode(list.first);
+        var previous = first;
+
+        while(current!=null){
+            var next = current.next;
+            current.next=previous;
+            previous = current;
+            current = next;
+        }
+        return list;
+    }
+
+    public void reverse(){
+        var previous = first;
+        var current = first.next;
+
+        last = first;
+        last.next = null;
+        while(current!=null){
+            var next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+        first = previous;
+    }
+
+
+    private boolean removeMiddle(Node node){
         if (isEmpty()){
             throw new NoSuchElementException();
         }
@@ -67,9 +97,9 @@ public class LinkedList {
             first =last= null;
             return false;
         }
-        var next = n.next;
-        n.value=next.value;
-        n.next=next.next;
+        var next = node.next;
+        node.value=next.value;
+        node.next=next.next;
         return true;
 
 
@@ -89,4 +119,5 @@ public class LinkedList {
     private boolean isEmpty(){
         return first==null;
     }
+
 }

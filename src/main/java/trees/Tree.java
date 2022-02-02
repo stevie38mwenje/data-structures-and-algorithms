@@ -25,7 +25,7 @@ public class Tree {
 
     private Node root;
 
-    private void insert(int value) {
+    public void insert(int value) {
         if (root == null) {
             root = new Node(value);
             return;
@@ -81,7 +81,7 @@ public class Tree {
         }
         traverseInOrder(root.leftChild);
         System.out.println(root);
-        traversePreOrder(root.rightChild);
+        traverseInOrder(root.rightChild);
 
     }
 
@@ -94,5 +94,56 @@ public class Tree {
         System.out.println(root);
 
     }
+
+    public int min() {
+        return min(root);
+    }
+
+    private int min(Node root){
+        if(isLeaf(root)){
+            return root.value;
+        }
+
+            var right = min(root.rightChild);
+            var left = min(root.leftChild);
+            return Math.min(Math.min(right,left),root.value);
+
+    }
+
+
+//    private boolean exists(Node root,int target){
+//       if(root.value == target){
+//           return true;
+//       }
+//        if(root == null){
+//            return false;
+//        }
+//        boolean res1=exists(root.leftChild,target);
+//        if(res1){return  true;}
+//        boolean res2=exists(root.rightChild,target);
+//        if(res2){return  true;}
+
+
+    private int minBst(Node root){
+        if(root==null){
+            throw new IllegalStateException();
+        }
+       var current = root;
+       var last = current;
+       while(current!=null){
+          last = current;
+           current = current.leftChild;
+
+       }
+        return last.value;
+
+
+    }
+
+    private boolean isLeaf(Node root){
+        return root.rightChild==null&&root.leftChild==null;
+    }
+
+
 
 }

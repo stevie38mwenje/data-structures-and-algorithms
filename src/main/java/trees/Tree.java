@@ -121,30 +121,24 @@ public class Tree {
     }
 
     private int maxDepth(Node root){
+        if(root==null){
+            return -1;
+        }
+
         if(isLeaf(root)){
             return 0;
         }
 
-        var right = maxDepth(root.rightChild);
-        var left = maxDepth(root.leftChild);
+//        var right = maxDepth(root.rightChild);
+//        var left = maxDepth(root.leftChild);
 
-        return 1 +Math.max(left,right);
+        return 1 +Math.max(maxDepth(root.leftChild),maxDepth(root.rightChild));
 
     }
 
-
-//    private boolean exists(Node root,int target){
-//       if(root.value == target){
-//           return true;
-//       }
-//        if(root == null){
-//            return false;
-//        }
-//        boolean res1=exists(root.leftChild,target);
-//        if(res1){return  true;}
-//        boolean res2=exists(root.rightChild,target);
-//        if(res2){return  true;}
-
+    public int minBst(){
+        return minBst(root);
+    }
 
     private int minBst(Node root){
         if(root==null){

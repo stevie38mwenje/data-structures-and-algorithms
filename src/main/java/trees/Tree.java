@@ -2,17 +2,15 @@ package trees;
 
 public class Tree {
 
+    public Tree(Node root) {
+        this.root = root;
+    }
+
+    public Tree() {
+
+    }
 
     private static class Node{
-        @Override
-        public String toString() {
-            return "Node{" +
-                    "value=" + value +
-                    ", leftChild=" + leftChild +
-                    ", rightChild=" + rightChild +
-                    '}';
-        }
-
         private int value;
         private Node leftChild;
         private Node rightChild;
@@ -20,6 +18,11 @@ public class Tree {
 
         public Node(int value){
             this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
         }
     }
 
@@ -85,6 +88,10 @@ public class Tree {
 
     }
 
+    public void traversePostOrder(){
+        traversePostOrder(root);
+    }
+
     private void traversePostOrder(Node root){
         if(root==null){
             return;
@@ -107,6 +114,21 @@ public class Tree {
             var right = min(root.rightChild);
             var left = min(root.leftChild);
             return Math.min(Math.min(right,left),root.value);
+
+    }
+    public int maxDepth(){
+        return maxDepth(root);
+    }
+
+    private int maxDepth(Node root){
+        if(isLeaf(root)){
+            return 0;
+        }
+
+        var right = maxDepth(root.rightChild);
+        var left = maxDepth(root.leftChild);
+
+        return 1 +Math.max(left,right);
 
     }
 
@@ -143,6 +165,7 @@ public class Tree {
     private boolean isLeaf(Node root){
         return root.rightChild==null&&root.leftChild==null;
     }
+
 
 
 

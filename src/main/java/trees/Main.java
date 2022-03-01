@@ -9,7 +9,13 @@ public class Main {
         tree.insert(6);
         tree.insert(7);
         tree.insert(20);
-        //mytree.traversePostOrder();
+
+        System.out.println("===POSTORDER===");
+        tree.traversePostOrder();
+        System.out.println("===INORDER===");
+        tree.traverseInorder();
+        System.out.println("===PREORDER===");
+        tree.traversePreorder();
 
 
         System.out.println(tree.minBst());

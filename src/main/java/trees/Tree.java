@@ -10,6 +10,8 @@ public class Tree {
 
     }
 
+
+
     private static class Node{
         private int value;
         private Node leftChild;
@@ -69,6 +71,10 @@ public class Tree {
         }
         return false;
     }
+
+    public void traversePreorder() {
+        traversePreOrder(root);
+    }
     private void traversePreOrder(Node root){
         if(root==null){
             return;
@@ -78,6 +84,10 @@ public class Tree {
         traversePreOrder(root.rightChild);
     }
 
+
+    public void traverseInorder(){
+        traverseInOrder(root);
+    }
     private void traverseInOrder(Node root){
         if(root==null){
             return;

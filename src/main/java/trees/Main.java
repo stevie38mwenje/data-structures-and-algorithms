@@ -17,8 +17,10 @@ public class Main {
         System.out.println("===PREORDER===");
         tree.traversePreorder();
 
-
+        System.out.println("===MINIMUM VALUE===");
         System.out.println(tree.minBst());
+
+        System.out.println("===DEPTH===");
         System.out.println(tree.maxDepth());
 //        System.out.println("Height of tree is : " +
 //                mytree.maxDepth());

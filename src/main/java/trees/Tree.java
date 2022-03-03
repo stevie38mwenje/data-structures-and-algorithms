@@ -139,9 +139,6 @@ public class Tree {
             return 0;
         }
 
-//        var right = maxDepth(root.rightChild);
-//        var left = maxDepth(root.leftChild);
-
         return 1 +Math.max(maxDepth(root.leftChild),maxDepth(root.rightChild));
 
     }

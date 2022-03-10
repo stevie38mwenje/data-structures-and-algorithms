@@ -2,14 +2,20 @@ package executor;
 
 public class LongTask {
     public static void simulate(){
-        Thread task = new Thread();
-        task.start();
         try {
-            task.sleep(5000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }}
+
+        public static void simulate(int delay){
+            try {
+                Thread.sleep(delay);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
 
-    }
+
+}
 }

@@ -25,7 +25,7 @@ public class Graph {
 
     //private List<Node> nodes = new ArrayList<>();
     private Map<String,Node> nodes = new HashMap<>();
-    private Map<Node,List<Node>> adjacencyList= new HashMap<>();
+    private final Map<Node,List<Node>> adjacencyList= new HashMap<>();
 
     public void addNode(String label){
         var node = new Node(label);

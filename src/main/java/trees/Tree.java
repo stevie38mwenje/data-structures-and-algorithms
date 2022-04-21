@@ -1,7 +1,11 @@
 package trees;
 
-public class Tree {
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
+public class Tree {
     public Tree(Node root) {
         this.root = root;
     }
@@ -9,7 +13,6 @@ public class Tree {
     public Tree() {
 
     }
-
 
 
     private static class Node{
@@ -71,6 +74,29 @@ public class Tree {
         }
         return false;
     }
+
+
+    public void bfs(){
+        bfs(root);
+    }
+    private void bfs(Node root){
+        if(root==null){
+            return;
+        }
+        Queue <Node> treequeue = new LinkedList<>();
+        treequeue.add(root);
+        while(treequeue.isEmpty()==false){
+            Node currentNode = treequeue.remove();
+            System.out.println(currentNode.value);
+            if(currentNode.leftChild !=null){
+                treequeue.add(currentNode.leftChild);
+            }
+            if(currentNode.rightChild !=null){
+                treequeue.add(currentNode.rightChild);
+            }
+        }
+    }
+
 
     public void traversePreorder() {
         traversePreOrder(root);

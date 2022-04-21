@@ -1,5 +1,7 @@
 package graph;
 
+import trees.Tree;
+
 import java.util.*;
 
 public class Graph {
@@ -77,11 +79,84 @@ public class Graph {
         }
     }
 
-    public void bfs(Node root, Set<Node> unvisited){
+//    public void graphbfs(){
+//        graphbfs();
+//    }
+
+
+    public void graphbfs(String root){
+        var node = nodes.get(root);
+        if(root==null){
+            return;
+        }
+        Set <Node> visited = new HashSet<>();
+        Queue <Node> graphqueue = new LinkedList<>();
+        graphqueue.add(node);
+
+        while(!graphqueue.isEmpty()){
+            Node currentNode = graphqueue.remove();
+
+            if(visited.contains(currentNode))
+                continue;
+            System.out.println(currentNode);
+            visited.add(currentNode);
+
+            for(var neighbour:adjacencyList.get(currentNode))
+                if(!visited.contains(neighbour))
+                    graphqueue.add(neighbour);
+
+        }
 
     }
 
-    public void dfs(Node root, Set<Node> unvisited){
+
+    public void graphdfs(String root){
+        var node = nodes.get(root);
+        if(node==null){
+            return;
+        }
+        graphdfs(node,new HashSet<>());
+    }
+    private void graphdfs(Node root,Set<Node> visited){
+        System.out.println(root);
+        visited.add(root);
+
+        for(var neighbours:adjacencyList.get(root))
+            if(!visited.contains(neighbours))
+                graphdfs(neighbours,visited);
 
     }
-}
+
+    public void graphdfsIteravive(String root){
+        var node = nodes.get(root);
+            if(node==null)
+                return;
+            Set <Node> visited = new HashSet<>();
+            Stack<Node> stack = new Stack<>();
+            stack.push(node);
+            while(!stack.isEmpty()){
+                var currentNode = stack.pop();
+                if(visited.contains(currentNode))
+                    continue;
+
+                System.out.println(currentNode);
+                visited.add(currentNode);
+
+
+                for(var neighbour:adjacencyList.get(currentNode)){
+                    if(!visited.contains(neighbour))
+                        stack.push(neighbour);
+                }
+            }
+
+
+        }
+
+
+
+    }
+
+//    public void dfs(Node root, Set<Node> unvisited){
+//
+//    }
+

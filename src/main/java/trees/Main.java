@@ -9,6 +9,7 @@ public class Main {
         tree.insert(6);
         tree.insert(7);
         tree.insert(20);
+        System.out.println(tree);
 
         System.out.println("===POSTORDER===");
         tree.traversePostOrder();
@@ -16,6 +17,9 @@ public class Main {
         tree.traverseInorder();
         System.out.println("===PREORDER===");
         tree.traversePreorder();
+
+        System.out.println("===BFS===");
+        tree.bfs();
 
         System.out.println("===MINIMUM VALUE===");
         System.out.println(tree.minBst());

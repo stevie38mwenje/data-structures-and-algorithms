@@ -9,7 +9,15 @@ public class Main {
         tree.insert(6);
         tree.insert(7);
         tree.insert(20);
-        System.out.println(tree);
+        var list = tree.getNodesAtDistance(1);
+        for(var item:list){
+            System.out.println(item);
+        }
+
+        System.out.println(tree.isBinarySearchTree());
+
+        System.out.println("===LEVELORDER===");
+        tree.traverseLevelOrder();
 
         System.out.println("===POSTORDER===");
         tree.traversePostOrder();

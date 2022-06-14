@@ -97,6 +97,45 @@ public class Tree {
         }
     }
 
+    public ArrayList<Integer> getNodesAtDistance(int distance){
+        var list = new ArrayList<Integer>();
+        getNodesAtDistance(root, distance,list);
+        return list;
+    }
+    private void getNodesAtDistance(Node root, int distance, ArrayList<Integer> list){
+        if(root == null){
+            return;
+        }
+        if(distance==0){
+            list.add(root.value);
+//            System.out.println(root.value);
+            return;
+        }
+        getNodesAtDistance(root.leftChild, distance - 1,list);
+        getNodesAtDistance(root.rightChild, distance - 1,list);
+
+    }
+
+    public void traverseLevelOrder(){
+        for(var i = 0;i<=height();i++){
+           var list = getNodesAtDistance(i);
+           for(var item:list){
+               System.out.println(item);
+           }
+
+        }
+    }
+
+    public int height(){
+        return height(root);
+    }
+
+    private int height(Node root){
+        if(root == null){
+            return 0;
+        }
+        return Math.max(height(root.leftChild)+1,height(root.rightChild)+1);
+    }
 
     public void traversePreorder() {
         traversePreOrder(root);
@@ -138,8 +177,62 @@ public class Tree {
 
     }
 
+//    public boolean isValidBST(Node root){
+//        if(root==null){
+//            return true;
+//        }
+//        return validateNode(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
+//
+//    }
+//
+//    private boolean validateNode(Node root, int minValue, int maxValue) {
+//        if(root.value<=minValue||root.value>=maxValue){
+//            return false;
+//        }
+//        if(root.leftChild!=null){
+//            if(!validateNode(root.leftChild, minValue, root.value-1)){
+//                return false;
+//            }
+//        }
+//        if(root.rightChild!=null){
+//            if(!validateNode(root.rightChild, maxValue, root.value-1)){
+//                return false;
+//            }
+//        }
+//
+//        return true;
+//    }
+
+
+    public boolean isBinarySearchTree(){
+        return isBinarySearchTree(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
+    }
+
+
+    private boolean isBinarySearchTree(Node root, int min, int max){
+        if(root==null){
+            return true;
+        }
+        if(root.value<=min||root.value>=max){
+            return false;
+        }
+        return isBinarySearchTree(root.leftChild, min, root.value - 1) && isBinarySearchTree(root.rightChild, min, root.value + 1);
+    }
+
     public int min() {
-        return min(root);
+        if(root==null){
+            throw new IllegalStateException();
+        }
+
+        var current = root;
+        var last = current;
+        while(current!=null){
+            last = current;
+            current = current.leftChild;
+        }
+       return last.value;
+
+
     }
 
     private int min(Node root){

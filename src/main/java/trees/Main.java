@@ -16,6 +16,9 @@ public class Main {
 
         System.out.println(tree.isBinarySearchTree());
 
+        System.out.println("===minimum===");
+        System.out.println(tree.minBst());
+
         System.out.println("===LEVELORDER===");
         tree.traverseLevelOrder();
 

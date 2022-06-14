@@ -235,13 +235,17 @@ public class Tree {
 
     }
 
-    private int min(Node root){
+    public void minValue(){
+        minValue(root);
+    }
+
+    private int minValue(Node root){
         if(isLeaf(root)){
             return root.value;
         }
 
-            var right = min(root.rightChild);
-            var left = min(root.leftChild);
+            var right = minValue(root.rightChild);
+            var left = minValue(root.leftChild);
             return Math.min(Math.min(right,left),root.value);
 
     }

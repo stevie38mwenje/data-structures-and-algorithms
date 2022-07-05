@@ -1,7 +1,5 @@
 package graph;
 
-import trees.Tree;
-
 import java.util.*;
 
 public class Graph {
@@ -92,10 +90,8 @@ public class Graph {
         Set <Node> visited = new HashSet<>();
         Queue <Node> graphqueue = new LinkedList<>();
         graphqueue.add(node);
-
         while(!graphqueue.isEmpty()){
             Node currentNode = graphqueue.remove();
-
             if(visited.contains(currentNode))
                 continue;
             System.out.println(currentNode);
@@ -104,7 +100,6 @@ public class Graph {
             for(var neighbour:adjacencyList.get(currentNode))
                 if(!visited.contains(neighbour))
                     graphqueue.add(neighbour);
-
         }
 
     }
@@ -138,19 +133,15 @@ public class Graph {
                 var currentNode = stack.pop();
                 if(visited.contains(currentNode))
                     continue;
-
                 System.out.println(currentNode);
                 visited.add(currentNode);
-
-
                 for(var neighbour:adjacencyList.get(currentNode)){
                     if(!visited.contains(neighbour))
                         stack.push(neighbour);
                 }
             }
-
-
         }
+
 
 
 

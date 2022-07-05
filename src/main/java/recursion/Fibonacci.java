@@ -14,6 +14,7 @@ public class Fibonacci {
         cache[0] = 0;
         cache[1] = 1;
 
+
         for(int i=2;i<=n;i++){
             cache[i] = cache[i-1] + cache[i-2];
         }
@@ -33,12 +34,24 @@ public class Fibonacci {
         return sum;
     }
 
+    public static int tribonacci(int n) {
+        int [] cache = new int[n+3];
+        cache[0]=0;
+        cache[1]=1;
+        cache[2]=1;
+        for(int i=3;i<=n&n<=37;i++){
+            cache[i]=cache[i]+cache[i+1]+cache[i+2];
+        }
+        return cache[n];
+    }
+
     static class Demo {
         public static void main(String[] args) {
             //Fibonacci fib = new Fibonacci();
-            System.out.println(fibonacci(0));
-            System.out.println(fib(9));
-            System.out.println(fib1(9));
+//            System.out.println(fibonacci(0));
+//            System.out.println(fib(4));
+//            System.out.println(fib1(9));
+            System.out.println(tribonacci(6));
 
         }
     }

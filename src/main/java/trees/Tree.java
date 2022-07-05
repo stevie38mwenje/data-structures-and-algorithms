@@ -79,22 +79,31 @@ public class Tree {
     public void bfs(){
         bfs(root);
     }
-    private void bfs(Node root){
-        if(root==null){
-            return;
-        }
+    private List<List<Integer>> bfs(Node root){
         Queue <Node> treequeue = new LinkedList<>();
-        treequeue.add(root);
-        while(treequeue.isEmpty()==false){
-            Node currentNode = treequeue.remove();
-            System.out.println(currentNode.value);
-            if(currentNode.leftChild !=null){
-                treequeue.add(currentNode.leftChild);
-            }
-            if(currentNode.rightChild !=null){
-                treequeue.add(currentNode.rightChild);
-            }
+        List<List<Integer>> res = new ArrayList<>();
+        if(root==null){
+            return res;
         }
+        treequeue.add(root);
+        while(!treequeue.isEmpty()){
+            List<Integer> level = new ArrayList<>();
+            int size = treequeue.size();
+            for(int i = 0;i<size;i++){
+                Node currentNode = treequeue.remove();
+                System.out.println(currentNode.value);
+                if(currentNode.leftChild !=null){
+                    treequeue.add(currentNode.leftChild);
+                }
+                if(currentNode.rightChild !=null){
+                    treequeue.add(currentNode.rightChild);
+                }
+                res.add(level);
+
+            }
+
+        }
+        return res;
     }
 
     public ArrayList<Integer> getNodesAtDistance(int distance){

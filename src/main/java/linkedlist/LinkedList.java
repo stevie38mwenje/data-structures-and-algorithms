@@ -145,8 +145,8 @@ public class LinkedList {
         node.next=next.next;
         return true;
 
-
     }
+
 
     private Node getPreviousNode(Node node){
         var current = first;

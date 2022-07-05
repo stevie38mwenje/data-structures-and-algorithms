@@ -20,6 +20,30 @@ public class Heap {
 
     }
 
+    public void remove(){
+        if(isEmpty()){
+            throw new IllegalStateException();
+        }
+
+//        items[0] = items[size-1];
+//        size--;
+
+        items[0] = items[--size];
+        //if item in the root is less than its children bubledown
+        var index = 0;
+        while(!isValidParent(index)){
+            var largeChildIndex = (Math.max(leftChildIndex(index), (rightChildIndex(index))));
+            swap(index,largeChildIndex);
+            index = largeChildIndex;
+        };
+
+    }
+
+    private boolean isValidParent(int index){
+        return items[index]>=items[leftChildIndex(index)] && items[index]>=items[rightChildIndex(index)];
+
+    }
+
     private void swap(int index1, int index2) {
         int temp = items[index1];
         items[index1] = items[index2];

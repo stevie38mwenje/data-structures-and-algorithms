@@ -12,7 +12,6 @@ public class WordEngine {
         StringBuilder reversed = new StringBuilder();
         for(var i = words.length-1;i>=0;i--){
             reversed.append(words[i] + " ");
-
         }
         return reversed.toString().trim().toLowerCase(Locale.ROOT);
     }

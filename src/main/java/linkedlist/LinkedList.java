@@ -159,6 +159,11 @@ public class LinkedList {
         return null;
     }
 
+
+//    private Node getMiddleNode(Node node){
+//
+//    }
+
     private boolean isEmpty(){
         return first==null;
     }

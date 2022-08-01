@@ -35,11 +35,8 @@ public class Graph {
 
     public void addEdge(String from, String to){
         var fromNode = nodes.get(from);
-        if(fromNode==null){
-            throw new IllegalArgumentException();
-        }
         var toNode = nodes.get(to);
-        if(toNode==null){
+        if(fromNode==null||toNode==null){
             throw new IllegalArgumentException();
         }
         adjacencyList.get(fromNode).add(toNode);
@@ -65,13 +62,10 @@ public class Graph {
 
     public void removeNode(String label){
         var node = nodes.get(label);
-        if(node==null){
-            return;
-        }
+        if(node==null) return;
 
         for(var n:adjacencyList.keySet()){
             adjacencyList.get(n).remove(node);
-
             adjacencyList.remove(node);
             nodes.remove(node);
         }
@@ -84,14 +78,12 @@ public class Graph {
 
     public void graphbfs(String root){
         var node = nodes.get(root);
-        if(root==null){
-            return;
-        }
+        if(root==null)return;
         Set <Node> visited = new HashSet<>();
         Queue <Node> graphqueue = new LinkedList<>();
         graphqueue.add(node);
         while(!graphqueue.isEmpty()){
-            Node currentNode = graphqueue.remove();
+            var currentNode = graphqueue.remove();
             if(visited.contains(currentNode))
                 continue;
             System.out.println(currentNode);
@@ -124,17 +116,16 @@ public class Graph {
 
     public void graphdfsIteravive(String root){
         var node = nodes.get(root);
-            if(node==null)
-                return;
+            if(node==null)return;
             Set <Node> visited = new HashSet<>();
             Stack<Node> stack = new Stack<>();
             stack.push(node);
             while(!stack.isEmpty()){
                 var currentNode = stack.pop();
-                if(visited.contains(currentNode))
-                    continue;
-                System.out.println(currentNode);
-                visited.add(currentNode);
+                if(!visited.contains(currentNode))
+                    visited.add(currentNode);
+                    System.out.println(currentNode);
+
                 for(var neighbour:adjacencyList.get(currentNode)){
                     if(!visited.contains(neighbour))
                         stack.push(neighbour);

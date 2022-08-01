@@ -6,7 +6,12 @@ public class CoinChange {
 //        if(amount<1)
 //            return 0;
 
-        return minimumCoins(coins,amount);
+//        return minimumCoins(coins,amount);
+        int [] cache = new int[amount];
+        for(int i=1;i<amount;i++) {
+            cache[i] = -1;
+        }
+        return minCoins(coins,amount,cache);
     }
 
     private static int minCoins(int[] coins, int rem, int[] count) {

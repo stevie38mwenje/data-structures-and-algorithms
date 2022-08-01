@@ -6,20 +6,10 @@ import java.util.List;
 import java.util.Queue;
 
 public class Tree {
-    public Tree(Node root) {
-        this.root = root;
-    }
-
-    public Tree() {
-
-    }
-
-
     private static class Node{
         private int value;
         private Node leftChild;
         private Node rightChild;
-
 
         public Node(int value){
             this.value = value;
@@ -31,7 +21,15 @@ public class Tree {
         }
     }
 
+
     private Node root;
+
+    public Tree(Node root) {
+        this.root = root;
+    }
+
+    public Tree() {
+    }
 
     public void insert(int value) {
         if (root == null) {
@@ -91,7 +89,7 @@ public class Tree {
             int size = treequeue.size();
             for(int i = 0;i<size;i++){
                 Node currentNode = treequeue.remove();
-                System.out.println(currentNode.value);
+                //System.out.println(currentNode.value);
                 if(currentNode.leftChild !=null){
                     treequeue.add(currentNode.leftChild);
                 }
@@ -186,31 +184,31 @@ public class Tree {
 
     }
 
-//    public boolean isValidBST(Node root){
-//        if(root==null){
-//            return true;
-//        }
-//        return validateNode(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
-//
-//    }
-//
-//    private boolean validateNode(Node root, int minValue, int maxValue) {
-//        if(root.value<=minValue||root.value>=maxValue){
-//            return false;
-//        }
-//        if(root.leftChild!=null){
-//            if(!validateNode(root.leftChild, minValue, root.value-1)){
-//                return false;
-//            }
-//        }
-//        if(root.rightChild!=null){
-//            if(!validateNode(root.rightChild, maxValue, root.value-1)){
-//                return false;
-//            }
-//        }
-//
-//        return true;
-//    }
+    public boolean isValidBST(Node root){
+        if(root==null){
+            return true;
+        }
+        return validateNode(root,Integer.MIN_VALUE,Integer.MAX_VALUE);
+
+    }
+
+    private boolean validateNode(Node root, int minValue, int maxValue) {
+        if(root.value<=minValue||root.value>=maxValue){
+            return false;
+        }
+        if(root.leftChild!=null){
+            if(!validateNode(root.leftChild, minValue, root.value-1)){
+                return false;
+            }
+        }
+        if(root.rightChild!=null){
+            if(!validateNode(root.rightChild, maxValue, root.value-1)){
+                return false;
+            }
+        }
+
+        return true;
+    }
 
 
     public boolean isBinarySearchTree(){

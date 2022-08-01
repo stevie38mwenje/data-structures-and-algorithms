@@ -5,9 +5,9 @@ public class Heap {
     private static final int divisor = 2;
     private int size;
 
-//    public Heap(int size) {
-//        this.size = size;
-//    }
+    public Heap(int size) {
+        this.size = size;
+    }
 
 
     public void insert(int value) {
@@ -106,7 +106,7 @@ public class Heap {
     }
 
     public static void main(String[] args){
-        Heap maxHeap = new Heap();
+        Heap maxHeap = new Heap(5);
         maxHeap.insert(10);
         maxHeap.insert(4);
 

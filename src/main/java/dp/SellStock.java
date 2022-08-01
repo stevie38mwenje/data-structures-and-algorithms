@@ -3,21 +3,20 @@ package dp;
 public class SellStock {
     public int maxProfit(int[] prices) {
         int leastSoFar = Integer.MAX_VALUE;//7
-        int ovaralProfit = 0;
+        int overallProfit = 0;
         int profitIfSoldToday = 0;
             //[7,1,5,3,6,4]
-        for(int i = 0;i<prices.length-1;i++){
-            if(prices[i]<leastSoFar){
+        for(int i = 0;i<=prices.length-1;i++){
+            if(prices[i]<leastSoFar)
                 leastSoFar = prices[i];//7->1
-            }
-            else {
-                profitIfSoldToday = prices[i] - leastSoFar;//0
-            }
-            if(ovaralProfit<profitIfSoldToday){
-            ovaralProfit = profitIfSoldToday;
+
+            profitIfSoldToday = prices[i] - leastSoFar;//0
+
+            if(overallProfit<profitIfSoldToday){
+                overallProfit = profitIfSoldToday;
             }
         }
-        return ovaralProfit;
+        return overallProfit;
 
 //        int buy = Integer.MAX_VALUE;//24000
 //        int sell = Integer.MIN_VALUE;//0

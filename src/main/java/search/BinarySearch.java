@@ -46,5 +46,11 @@ public class BinarySearch {
             int result = binarySearch.recursiveSearch(arr,0,4,value);
             System.out.println(result);
 
-}
+
+
+
+
+
+
+        }
 }

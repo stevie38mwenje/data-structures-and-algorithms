@@ -13,31 +13,9 @@ public class QuickSort {
 
     }
 
-
     static int partition(int[] array, int low, int high) {
         int pivot = array[high];
         int i = low - 1;
-
-       //     [3,9,2,5,1,7]
-        //  i      j
-        //       i
-
-        //    [3,2,9,5,1,7]
-        //         i j
-
-        //    [3,2,5,9,1,7]
-        //           i j
-
-
-        //    [3,2,5,1,9,7]
-        //           i j
-
-        //    [3,2,5,1,7,9]
-        //           i j
-
-        //return 7
-
-
         for (int j = low; j <= high - 1; j++) {
             if (array[j] < pivot) {
                 i++;

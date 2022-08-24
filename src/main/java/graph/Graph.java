@@ -78,7 +78,7 @@ public class Graph {
 
     public void graphbfs(String root){
         var node = nodes.get(root);
-        if(root==null)return;
+        if(node==null)return;
         Set <Node> visited = new HashSet<>();
         Queue <Node> graphqueue = new LinkedList<>();
         graphqueue.add(node);
@@ -93,31 +93,28 @@ public class Graph {
                 if(!visited.contains(neighbour))
                     graphqueue.add(neighbour);
         }
-
     }
 
 
     public void graphdfs(String root){
         var node = nodes.get(root);
-        if(node==null){
-            return;
-        }
+        if(node==null)return;
         graphdfs(node,new HashSet<>());
     }
     private void graphdfs(Node root,Set<Node> visited){
         System.out.println(root);
         visited.add(root);
 
-        for(var neighbours:adjacencyList.get(root))
-            if(!visited.contains(neighbours))
-                graphdfs(neighbours,visited);
+        for(var neighbour:adjacencyList.get(root))
+            if(!visited.contains(neighbour))
+                graphdfs(neighbour,visited);
 
     }
 
     public void graphdfsIteravive(String root){
-        var node = nodes.get(root);
+            var node = nodes.get(root);
             if(node==null)return;
-            Set <Node> visited = new HashSet<>();
+            Set<Node> visited = new HashSet<>();
             Stack<Node> stack = new Stack<>();
             stack.push(node);
             while(!stack.isEmpty()){

@@ -38,13 +38,33 @@ public class Rob {
         return cache.length-1;
     }
 
+        public static int rob2(int[] nums) {
+            int [] dp = new int[nums.length];
+
+            if(nums.length == 1)return nums[0];
+            //base cases
+            dp[0] = nums[0];
+            dp[1] = Math.max(nums[0],nums[1]);
+
+            //recurrence realtionship
+            for(int i = 2;i<nums.length;i++){
+                dp[i] = Math.max(dp[i-1],dp[i-2]+nums[i]);
+
+            }
+
+            return dp[nums.length-1];
+
+
+        }
+
+
     static class Demo {
         public static void main(String[] args) {
             int houses [] = {5,50,66,4,100};
 
             //Fibonacci fib = new Fibonacci();
             System.out.println("We are robbing "+rob(houses));
-            System.out.println("We are robbing "+rob1(houses));
+            System.out.println("We are robbing "+rob2(houses));
 //            System.out.println(fib(9));
 //            System.out.println(fib1(9));
 

@@ -23,6 +23,12 @@ public class LinkedListImpl {
     }
 
     private void addFirst(int value){
+        var node = new Node(value);
+        if (head == null) {
+            head=tail=node;
+        }
+        node.next = head;
+        head=node;
 
     }
 
